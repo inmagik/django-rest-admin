@@ -22,9 +22,12 @@ Install django-rest-admin::
 
     pip install django-rest-admin
 
-Then use it in a project::
+Then use it in a project you can register a model in a file named `rest_admin.py` just like:
 
-    import django_rest_admin
+    from django_rest_admin.register import rest_admin
+    from .models import Person
+
+    rest_admin.register(Person)
 
 Features
 --------
