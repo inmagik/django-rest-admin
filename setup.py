@@ -27,6 +27,19 @@ if sys.argv[-1] == 'tag':
 readme = open('README.rst').read()
 history = open('HISTORY.rst').read().replace('.. :changelog:', '')
 
+def get_install_requires():
+    """
+    parse requirements.txt, ignore links, exclude comments
+    """
+    requirements = []
+    for line in open('requirements.txt').readlines():
+        # skip to next iteration if comment or empty line
+        if line.startswith('#') or line == '' or line.startswith('http') or line.startswith('git'):
+            continue
+        # add line to requirements
+        requirements.append(line)
+    return requirements
+
 setup(
     name='django-rest-admin',
     version=version,
@@ -39,8 +52,7 @@ setup(
         'django_rest_admin',
     ],
     include_package_data=True,
-    install_requires=[
-    ],
+    install_requires=get_install_requires(),
     license="BSD",
     zip_safe=False,
     keywords='django-rest-admin',

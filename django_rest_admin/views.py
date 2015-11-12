@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from django_rest_admin import rest_admin
+from django_rest_admin.register import rest_admin
 import urllib
 
 def get_field_meta(field):

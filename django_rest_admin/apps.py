@@ -5,7 +5,8 @@ import sys
 import imp
 import importlib
 import os
- 
+
+from .register import rest_admin
 
 class RestAdminAppConfig(AppConfig):
 
