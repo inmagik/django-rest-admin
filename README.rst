@@ -5,10 +5,10 @@ django-rest-admin
 .. image:: https://badge.fury.io/py/django-rest-admin.png
     :target: https://badge.fury.io/py/django-rest-admin
 
-.. image:: https://travis-ci.org/bianchimro/django-rest-admin.png?branch=master
-    :target: https://travis-ci.org/bianchimro/django-rest-admin
+.. image:: https://travis-ci.org/inmagik/django-rest-admin.png?branch=master
+    :target: https://travis-ci.org/inmagik/django-rest-admin
 
-En EADRREST endpoints for administering django models.
+REST endpoints for administering django models.
 
 Documentation
 -------------
