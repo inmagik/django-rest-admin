@@ -2,16 +2,25 @@
 django-rest-admin
 =============================
 
-THIS PROJECT IS IN AN EARLY STAGE, DO NOT USE IN PRODUCTION, IT LACKS MOST OF THE BASIC FEATURES.
+.. image:: https://badge.fury.io/py/django-rest-admin.png
+    :target: https://badge.fury.io/py/django-rest-admin
 
+.. image:: https://travis-ci.org/inmagik/django-rest-admin.png?branch=master
+    :target: https://travis-ci.org/inmagik/django-rest-admin
+
+REST endpoints for administering django models.
+
+Documentation
+-------------
+
+The full documentation is at https://django-rest-admin.readthedocs.org.
 
 Quickstart
 ----------
 
 Install django-rest-admin::
 
-    python setup.py install
-
+    pip install django-rest-admin
 
 Then use it in a project:
 
