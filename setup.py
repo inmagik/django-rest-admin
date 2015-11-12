@@ -30,11 +30,11 @@ history = open('HISTORY.rst').read().replace('.. :changelog:', '')
 setup(
     name='django-rest-admin',
     version=version,
-    description="""En EADRREST endpoints for administering django models.""",
+    description="""REST endpoints for administering django models.""",
     long_description=readme + '\n\n' + history,
     author='Mauro Bianchi',
     author_email='bianchimro@gmail.com',
-    url='https://github.com/bianchimro/django-rest-admin',
+    url='https://github.com/inmagik/django-rest-admin',
     packages=[
         'django_rest_admin',
     ],
