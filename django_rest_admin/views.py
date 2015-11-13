@@ -1,7 +1,10 @@
 from django.shortcuts import render
 from rest_framework.views import APIView
 from rest_framework.response import Response
+from rest_framework import permissions
 from django_rest_admin.register import rest_admin
+
+
 import urllib
 
 def get_field_meta(field):
@@ -24,6 +27,8 @@ def get_field_meta(field):
 
 
 class RestAdminMetaView(APIView):
+
+    permission_classes = [ permissions.IsAdminUser, ]
 
     def get(self, request):
         out = { }

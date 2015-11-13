@@ -2,7 +2,7 @@ from collections import OrderedDict
 from django.conf import settings
 import warnings
 from django.core.urlresolvers import reverse
-from rest_framework import viewsets, serializers, permissions
+from rest_framework import viewsets, serializers, permissions, authentication
 
 #import logging
 #logger = logging.getLogger(__name__)
@@ -42,7 +42,8 @@ class RestAdminRegister(object):
             viewset_attrs = {
                 'serializer_class' : serializer,
                 'queryset' : model.objects.all(),
-                'permission_classes' : [ permissions.IsAdminUser, ]
+                'permission_classes' : [ permissions.IsAdminUser, ],
+                'authentication_classes' : [ authentication.TokenAuthentication, authentication.SessionAuthentication, ],
             }
             viewset = type(v+'Serializer', (viewsets.ModelViewSet,), viewset_attrs)
             router.register(r'^%s'%v, viewset)

@@ -5,6 +5,15 @@ django-rest-admin
 THIS PROJECT IS IN AN EARLY STAGE, DO NOT USE IN PRODUCTION, IT LACKS MOST OF THE BASIC FEATURES.
 
 
+django-rest-admin is a django reusable app that aims at providing an easy way to create rest endpoints for managing model instances, pretty much like the admin does.
+
+* automatic urls configuration
+* simple registration of models via autodiscovering
+* metadata about models and endpoints
+
+This app is based on django-rest-framework.
+
+
 Quickstart
 ----------
 
