@@ -1,0 +1,26 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-4">
+            <div class="card">
+                <div class="card-block">
+                    <h4 class="card-title">
+                        Registered entities
+                    </h4>
+                    <table class="table">
+                        <tr>
+                            <th>Name</th>
+                            <th>List</th>
+                            <th>Add</th>
+                        </tr>
+                        <tr ng-repeat="(k,v) in meta">
+                            <td>{{k}}</td>
+                            <td><a ui-sref="app.changelist({name:k})">List</a></td>
+                            <td></td>
+                        </tr>
+                    </table>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

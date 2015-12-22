@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>App title</title>
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+
+</head>
+<body ng-app="app" ng-controller="AppCtrl">
+    
+    <nav class="navbar navbar-fixed-top navbar-dark bg-inverse" ng-if="logged">
+      <div class="nav navbar-nav">
+        <a class="nav-item nav-link active" ui-sref="#">Django Rest Admin <span class="sr-only">(current)</span></a>
+      </div>
+      <div class="nav navbar-nav pull-xs-right">
+        <a class="nav-item nav-link pointer" ng-click="logout()">Logout</a>
+      </div>
+    </nav>
+    <div ui-view></div>
+
+    <!-- build:templatejs -->
+    <!-- endbuild -->
+    
+    <!-- vendor -->
+
+    <script src="lib/jquery/dist/jquery.min.js"></script>
+    <script src="lib/angular/angular.min.js"></script>
+    <script src="lib/angular-http-auth/src/http-auth-interceptor.js"></script>
+    <script src="lib/lodash/lodash.min.js"></script>
+    <script src="lib/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script src="lib/angular-permission/dist/angular-permission.js"></script>
+    <script src="lib/restangular/dist/restangular.min.js"></script>
+
+    <!-- satellizer if needed -->
+    <script src="lib/satellizer/satellizer.min.js"></script>
+
+    <!-- end of vendor -->
+    
+    <!-- build:applicationjs -->
+    <script src="js/modules/config/constants-config.js"></script>    
+    <script src="js/modules/config/network-config.js"></script>    
+    <script src="js/modules/config/permissions-config.js"></script>    
+    <script src="js/modules/config/states-config.js"></script>    
+    
+    <!-- satellizer config if needed -->
+    <script src="js/modules/config/satellizer-config.js"></script>
+    
+    <script src="js/app.js"></script>
+    <script src="js/controllers/app-controller.js"></script>
+    
+    <script src="js/controllers/login-controller-satellizer.js"></script>
+
+    <!-- example restangular-based data service -->
+    <script src="js/services/data-service.js"></script>
+    
+
+    <!-- endbuild -->
+    
+</body>
+</html>
