@@ -6,7 +6,7 @@ import imp
 import importlib
 import os
 
-from .register import rest_admin
+
 
 class RestAdminAppConfig(AppConfig):
 
@@ -23,6 +23,8 @@ def autodiscover():
     Automatic discovering of rest_admin.py file inside apps.
     similar to what Django admin does. 
     """
+    from .register import rest_admin
+
     if not RestAdminAppConfig.loaded:
         for app in settings.INSTALLED_APPS:
             # For each app, we need to look for an rest_admin.py inside that app's
