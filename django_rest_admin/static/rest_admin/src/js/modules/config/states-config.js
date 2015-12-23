@@ -71,7 +71,6 @@ angular.module('app.statesconfig', ['ui.router'])
             meta : function(DataService){
                 return DataService.restMeta.get()
             }
-          
         },
         
         data: {
@@ -85,86 +84,30 @@ angular.module('app.statesconfig', ['ui.router'])
 
     .state('app.dashboard.home', {
         url: '',
-        templateUrl: 'templates/home.html',
-        data: {
-            permissions: {
-                only: ['logged'],
-                redirectTo: 'app.login'
-            }
-        }
-        
+        templateUrl: 'templates/home.html'
     })
 
     .state('app.dashboard.changelist', {
         url: '/changelist/:name',
+        cache: false,
         templateUrl: 'templates/changelist.html',
-        controller: function($scope, $stateParams){
-            $scope.name = $stateParams.name;
-        },
-        resolve: {
-            
-        },
-        
-        data: {
-            permissions: {
-                only: ['logged'],
-                redirectTo: 'app.login'
-            }
-        }
+        controller: 'ChangeListCtrl'
         
     })
 
     .state('app.dashboard.detail', {
-        url: '/detail/:name',
+        url: '/detail/:name/:id',
+        cache: false,
         templateUrl: 'templates/detail.html',
-        controller: function($scope, $stateParams){
-          $scope.name = $stateParams.name;  
-        },
-        resolve: {
-            
-        },
-        
-        data: {
-            permissions: {
-                only: ['logged'],
-                redirectTo: 'app.login'
-            }
-        }
+        controller: 'DetailCtrl'
         
     })
 
     .state('app.dashboard.add', {
         url: '/add/:name',
+        cache: false,
         templateUrl: 'templates/new.html',
-        controller: function($scope, $stateParams, DataService){
-
-          $scope.name = $stateParams.name;  
-          $scope.schema = $scope.meta[$scope.name].json_schema;
-          $scope.form = [
-            "*",
-            {
-              type: "submit",
-              title: "Save"
-            }
-          ];
-          $scope.model = {};
-          $scope.save = function(){
-            console.log(100, $scope.model);
-          };
-
-          
-        },
-        resolve: {
-            
-        },
-        
-        data: {
-            permissions: {
-                only: ['logged'],
-                redirectTo: 'app.login'
-            }
-        }
-        
+        controller: 'AddCtrl'
     });
 
     $urlRouterProvider.otherwise(function ($injector) {

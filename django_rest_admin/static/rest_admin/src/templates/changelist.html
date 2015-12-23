@@ -1,14 +1,30 @@
 <div class="container">
     <h3>Changelist for {{name}}
-        <button class="btn btn-primary btn-outline btn-sm pull-xs-right" ui-sref="app.dashboard.add({name:name})">
+        
+    </h3>
+    <p>
+        <button class="btn btn-primary btn-outline btn-xs pull-right" ui-sref="app.dashboard.add({name:name})">
         Add {{ name }}
         </button>
 
-    </h3>
+    </p>
     
     <table class="table">
+        <thead>
         <th ng-repeat="field in meta[name].fields">
             {{field.name}}
         </th>
+        <th>Edit</th>
+        </thead>
+        <tbody>
+            <tr ng-repeat="item in items">
+                <td ng-repeat="field in meta[name].fields">
+                    {{item[field.name]}}
+                </td>
+                <td>
+                    <a class="pointer" ui-sref="app.dashboard.detail({name:name, id:item.id})">Edit</a>
+                </td>
+            </tr>
+        </tbody>
     </table>
 </div>

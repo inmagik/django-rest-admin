@@ -51,6 +51,9 @@ function DataService($http, baseServerUrl, DataServiceRestangular){
     
     //svc.tasks = DataServiceRestangular.service("tasks");
     svc.restMeta = DataServiceRestangular.oneUrl('meta');
+    svc.getEntityService = function(name, meta){
+        return DataServiceRestangular.service(name)
+    }
 
     return svc;
 }
