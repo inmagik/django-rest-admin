@@ -7,21 +7,13 @@
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>App title</title>
+    <link rel="stylesheet" href="lib/bootswatch-dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
-
+    
 </head>
 <body ng-app="app" ng-controller="AppCtrl">
     
-    <nav class="navbar navbar-fixed-top navbar-dark bg-inverse" ng-if="logged">
-      <div class="nav navbar-nav">
-        <a class="nav-item nav-link active" ui-sref="app.home">Django Rest Admin <span class="sr-only">(current)</span></a>
-      </div>
-      <div class="nav navbar-nav pull-xs-right">
-        <a class="nav-item nav-link pointer" ng-click="logout()">Logout</a>
-      </div>
-    </nav>
     <div ui-view></div>
 
     <!-- build:templatejs -->
@@ -39,6 +31,13 @@
 
     <!-- satellizer if needed -->
     <script src="lib/satellizer/satellizer.min.js"></script>
+
+    <!-- angular schema form delirium -->
+    <script type="text/javascript" src="lib/angular-sanitize/angular-sanitize.min.js"></script>
+    <script type="text/javascript" src="lib/tv4/tv4.js"></script>
+    <script type="text/javascript" src="lib/objectpath/lib/ObjectPath.js"></script>
+    <script type="text/javascript" src="lib/angular-schema-form/dist/schema-form.min.js"></script>
+    <script type="text/javascript" src="lib/angular-schema-form/dist/bootstrap-decorator.min.js"></script>
 
     <!-- end of vendor -->
     

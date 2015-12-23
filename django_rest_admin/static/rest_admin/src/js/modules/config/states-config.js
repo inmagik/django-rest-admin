@@ -13,7 +13,7 @@ angular.module('app.statesconfig', ['ui.router'])
     });
 
     $rootScope.$on("app:loginSuccess", function(){
-        $state.go("app.home");
+        $state.go("app.dashboard.home");
     });
     
 
@@ -37,7 +37,7 @@ angular.module('app.statesconfig', ['ui.router'])
         data: {
             permissions: {
                 except: ['logged'],
-                redirectTo: 'app.home'
+                redirectTo: 'app.dashboard.home'
             },
 
         },
@@ -59,11 +59,13 @@ angular.module('app.statesconfig', ['ui.router'])
         },
     })
     */
-    .state('app.home', {
-        url: '/home',
-        templateUrl: 'templates/home.html',
+    .state('app.dashboard', {
+        url: '/dashboard',
+        abstract : true,
+        templateUrl: 'templates/dashboard.html',
         controller: function($scope, meta){
             $scope.meta = meta.plain();
+            console.log(1, $scope.meta);
         },
         resolve: {
             meta : function(DataService){
@@ -81,7 +83,19 @@ angular.module('app.statesconfig', ['ui.router'])
         
     })
 
-    .state('app.changelist', {
+    .state('app.dashboard.home', {
+        url: '',
+        templateUrl: 'templates/home.html',
+        data: {
+            permissions: {
+                only: ['logged'],
+                redirectTo: 'app.login'
+            }
+        }
+        
+    })
+
+    .state('app.dashboard.changelist', {
         url: '/changelist/:name',
         templateUrl: 'templates/changelist.html',
         controller: function($scope, $stateParams){
@@ -100,7 +114,7 @@ angular.module('app.statesconfig', ['ui.router'])
         
     })
 
-    .state('app.detail', {
+    .state('app.dashboard.detail', {
         url: '/detail/:name',
         templateUrl: 'templates/detail.html',
         controller: function($scope, $stateParams){
@@ -117,11 +131,45 @@ angular.module('app.statesconfig', ['ui.router'])
             }
         }
         
+    })
+
+    .state('app.dashboard.add', {
+        url: '/add/:name',
+        templateUrl: 'templates/new.html',
+        controller: function($scope, $stateParams, DataService){
+
+          $scope.name = $stateParams.name;  
+          $scope.schema = $scope.meta[$scope.name].json_schema;
+          $scope.form = [
+            "*",
+            {
+              type: "submit",
+              title: "Save"
+            }
+          ];
+          $scope.model = {};
+          $scope.save = function(){
+            console.log(100, $scope.model);
+          };
+
+          
+        },
+        resolve: {
+            
+        },
+        
+        data: {
+            permissions: {
+                only: ['logged'],
+                redirectTo: 'app.login'
+            }
+        }
+        
     });
 
     $urlRouterProvider.otherwise(function ($injector) {
         var $state = $injector.get('$state');
-        $state.go('app.home');
+        $state.go('app.dashboard.home');
     });
 
 })

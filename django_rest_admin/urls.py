@@ -11,6 +11,7 @@ from .register import rest_admin
 from rest_framework import routers
 from django.contrib.auth import views as auth_views
 
+
 urlpatterns = patterns('',
     # probably would be better to provide our own endpoints.
     url(r'^session-login/', auth_views.login),

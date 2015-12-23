@@ -9,7 +9,8 @@ angular.module(
         'app.permissions' ,
         'http-auth-interceptor',
         'app.satellizerconfig',
-        'restangular'
+        'restangular',
+        'schemaForm'
     ]
 )
 
