@@ -49,10 +49,12 @@ You should be taken to your new admin interface, based on angular js.
 How it works
 ------------
 When you register a model, builds a REST-style CRUD interface by:
+
 * creating a django-rest-framework `ModelViewSet` class and passing in a `ModelSerializer` 
 * mounting the viewset urls
 
 Additionally, `rest_admin` creates a `meta` endpoint that exposes all configuration for registered models, that should include:
+
 * base REST endpoint for that model
 * model fields definition 
 * json-schema of the model
@@ -72,6 +74,7 @@ Features
 
 Ideas
 -----
+
 * Use the same approach to generate read-only endpoints. This would be useful for applications that only need to display or search data without modifying it.
 
 
