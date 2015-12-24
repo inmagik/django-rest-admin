@@ -3,3 +3,5 @@ from .models import Person, Place
 
 rest_admin.register(Person)
 rest_admin.register(Place)
+
+

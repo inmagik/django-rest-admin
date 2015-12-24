@@ -13,7 +13,7 @@ class DjangoModelToJSONSchema(object):
     def convert_modelfield(self, name, field, json_schema):
         target_def = {
             'title': pretty_name(name),
-            'description': field.help_text,
+            'description': getattr(field, 'help_text', None),
             'x-schema-form' : {}
         }
         
@@ -45,7 +45,7 @@ class DjangoModelToJSONSchema(object):
             target_def['type'] = 'string'
 
         
-        if field.choices:
+        if hasattr(field, 'choices') and field.choices:
             target_def['enum'] = [choice[0] for choice in field.choices]
         
         return target_def
@@ -64,7 +64,7 @@ class DjangoModelToJSONSchema(object):
         #CONSIDER: base_fields when given a class, fields for when given an instance
         fields = model._meta.get_fields(include_hidden=False)
         for field in fields:
-            if field.primary_key:
+            if hasattr(field, 'primary_key') and field.primary_key:
                 continue
             name = field.name
             if not field.null:
