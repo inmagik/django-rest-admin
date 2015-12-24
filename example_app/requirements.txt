@@ -1,6 +1,6 @@
 Django==1.9
 django-jsonschema==0.2.0
--e git+https://github.com/inmagik/django-rest-admin.git@c5a8fd4120fcaf0f99d1f8bdcb6dbf7f419a1b5f#egg=django_rest_admin-master
-djangorestframework==3.3.1
+-e git+https://github.com/inmagik/django-rest-admin.git@ce1e425463dcdf22de14a6812d46ef2ecc99a268#egg=django_rest_admin-master
+djangorestframework==3.3.2
 wheel==0.24.0
 wsgiref==0.1.2
