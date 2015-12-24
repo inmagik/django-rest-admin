@@ -1,3 +1,4 @@
+from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -56,3 +57,7 @@ class RestAdminMetaView(APIView):
             
 
         return Response(out)
+
+
+def redirect_admin(request):
+    return HttpResponseRedirect('/static/rest_admin/src/index.html')
