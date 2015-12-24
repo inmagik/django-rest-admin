@@ -4,5 +4,8 @@
     <div>
         <form sf-schema="schema" sf-form="form" sf-model="model" ng-submit="save(xform)" sf-options="{ formDefaults: { ngModelOptions: { updateOn: 'blur' } }}" name="xform"></form>
     </div>
-    <button class="btn btn-danger" ng-click="drop()">Remove</button>
+    <button class="btn btn-danger" ng-bootbox-confirm="Are you sure you want to confirm this?"
+        ng-bootbox-confirm-action="drop()">
+        Remove
+</button>
 </div>

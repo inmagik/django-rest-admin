@@ -10,7 +10,8 @@ angular.module(
         'http-auth-interceptor',
         'app.satellizerconfig',
         'restangular',
-        'schemaForm'
+        'schemaForm',
+        'ngBootbox'
     ]
 )
 

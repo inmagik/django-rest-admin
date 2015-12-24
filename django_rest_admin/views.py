@@ -4,7 +4,7 @@ from rest_framework.response import Response
 from rest_framework import permissions
 from rest_framework import authentication
 from django_rest_admin.register import rest_admin
-from djangojsonschema.jsonschema import DjangoModelToJSONSchema, DjangoFormToJSONSchema
+from .jsonschema import DjangoModelToJSONSchema
 from django.forms import ModelForm
 
 def get_field_meta(field):
@@ -51,10 +51,7 @@ class RestAdminMetaView(APIView):
             }
             form_cls = type(v+'Form',(ModelForm,), form_attrs)
             json_schema = DjangoModelToJSONSchema().convert_model(model)
-            json_schema_2 = DjangoFormToJSONSchema().convert_form(form_cls())
-            print json_schema
-            print json_schema_2
-
+            
             out[v] = {'fields' : out_fields, 'endpoint' : abs_url, 'json_schema' : json_schema }
             
 
