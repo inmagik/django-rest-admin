@@ -16,6 +16,7 @@ class DjangoModelToJSONSchema(object):
             'description': getattr(field, 'help_text', None),
             'x-schema-form' : {}
         }
+        print field, type(field)
         
         if isinstance(field, models.CharField):
             target_def['type'] = 'string'
@@ -64,6 +65,9 @@ class DjangoModelToJSONSchema(object):
         #CONSIDER: base_fields when given a class, fields for when given an instance
         fields = model._meta.get_fields(include_hidden=False)
         for field in fields:
+            if isinstance(field, (models.fields.related.ManyToManyField, models.fields.reverse_related.ManyToManyRel)):
+                continue
+
             if hasattr(field, 'primary_key') and field.primary_key:
                 continue
             name = field.name
