@@ -15,7 +15,7 @@
                         <tr ng-repeat="(k,v) in meta">
                             <td>{{k}}</td>
                             <td><a ui-sref="app.dashboard.changelist({name:k})">List</a></td>
-                            <td></td>
+                            <td><a ui-sref="app.dashboard.add({name:k})">Add</a></td>
                         </tr>
                     </table>
               </div>

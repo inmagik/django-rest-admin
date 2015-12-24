@@ -26,8 +26,11 @@ function AddCtrl($scope, $stateParams, DataService, $state){
     };
     
     $scope.save = function(form){
+        
         $scope.$broadcast('schemaFormValidate');
-        console.log(1234, form.$valid)
+        if(!form.$valid){
+            return;
+        }
         
         entityService.post($scope.model)
         .then(function(resp){
