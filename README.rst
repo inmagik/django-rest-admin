@@ -43,38 +43,32 @@ Now navigate to the url you used for hooking up rest_admin:
 
     http://localhost:8000/rest_admin/
 
-You should be taken to your new admin interface, based on angular js. 
+This is the base for your endpoints.
 
 
 How it works
 ------------
 When you register a model, builds a REST-style CRUD interface by:
 
-* creating a django-rest-framework `ModelViewSet` class and passing in a `ModelSerializer` 
+* creating a django-rest-framework `ModelViewSet` class and passing in a `ModelSerializer`
 * mounting the viewset urls
 
 Additionally, `rest_admin` creates a `meta` endpoint that exposes all configuration for registered models, that should include:
 
 * base REST endpoint for that model
-* model fields definition 
+* model fields definition
 * json-schema of the model
 
 Given this metadata is possible to build a client application acting as an admin.
-
-The project bundles an angular 1.x based admin. This frontend will eventually moved to another project and become an example on how to build apps using the REST interface provided by this project.
-
 
 Features
 --------
 
 * model registration à la admin (basic and non customizable for now)
 * automatic rest endpoint generation
-* experimental angular frontend
 
 
 Ideas
 -----
 
 * Use the same approach to generate read-only endpoints. This would be useful for applications that only need to display or search data without modifying it.
-
-
