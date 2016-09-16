@@ -33,7 +33,7 @@ class RestAdminRegister(object):
     def register_with_router(self, router):
         for v in self.models:
             model = self.models[v][0]
-            
+
             serializer_attrs = {
                 'Meta' : type('Meta', (), { 'model' : model })
             }
@@ -46,7 +46,7 @@ class RestAdminRegister(object):
                 'authentication_classes' : [ authentication.TokenAuthentication, authentication.SessionAuthentication, ],
             }
             viewset = type(v+'Serializer', (viewsets.ModelViewSet,), viewset_attrs)
-            router.register(r'^%s'%v, viewset)
+            router.register(r'%s'%v, viewset)
 
         return router
 
@@ -59,6 +59,3 @@ class RestAdminRegister(object):
 
 # Intended to be a singleton
 rest_admin = RestAdminRegister()
-
-
-
