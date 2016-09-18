@@ -7,6 +7,11 @@ from rest_framework import viewsets, serializers, permissions, authentication
 #import logging
 #logger = logging.getLogger(__name__)
 
+#TODO:MOVE AWAY
+class RestAdminConfig(object):
+    serializer_class = serializers.ModelSerializer
+
+
 
 class RestAdminRegister(object):
     """
@@ -22,7 +27,7 @@ class RestAdminRegister(object):
         self.urls = {}
 
 
-    def register(self, model, rest_admin_class=None):
+    def register(self, model, rest_admin_class=RestAdminConfig):
         """
         rest_admin_class is not used now
         it will be used to provide options (like a custom ModelAdmin class in django admin)
@@ -32,12 +37,12 @@ class RestAdminRegister(object):
 
     def register_with_router(self, router):
         for v in self.models:
-            model = self.models[v][0]
+            model, rest_admin_class = self.models[v]
 
             serializer_attrs = {
                 'Meta' : type('Meta', (), { 'model' : model })
             }
-            serializer = type(v+'Serializer', (serializers.ModelSerializer,), serializer_attrs)
+            serializer = type(v+'Serializer', (rest_admin_class.serializer_class,), serializer_attrs)
 
             viewset_attrs = {
                 'serializer_class' : serializer,

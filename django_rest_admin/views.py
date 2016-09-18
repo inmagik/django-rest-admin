@@ -29,8 +29,8 @@ def get_field_meta(field):
 
 class RestAdminMetaView(APIView):
 
-    authentication_classes = [ authentication.TokenAuthentication, authentication.SessionAuthentication, ]
-    permission_classes = [ permissions.IsAdminUser, ]
+    #authentication_classes = [ authentication.TokenAuthentication, authentication.SessionAuthentication, ]
+    #permission_classes = [ permissions.IsAdminUser, ]
 
     def get(self, request):
         out = { }
@@ -38,23 +38,23 @@ class RestAdminMetaView(APIView):
             model = rest_admin.models[v][0]
             abs_url = request.build_absolute_uri("../"+v)
 
-            
-            
+
+
             fields = model._meta.get_fields(include_hidden=False)
             out_fields = []
             for field in fields:
                 f = get_field_meta(field)
                 out_fields.append(f)
-            
+
             #getting json schema. all fields for now. #TODO: configure fields
             form_attrs = {
                 'Meta' : type('Meta', (), { 'model' : model, 'fields' : '__all__' })
             }
             form_cls = type(v+'Form',(ModelForm,), form_attrs)
             json_schema = DjangoModelToJSONSchema().convert_model(model)
-            
+
             out[v] = {'fields' : out_fields, 'endpoint' : abs_url, 'json_schema' : json_schema }
-            
+
 
         return Response(out)
 
