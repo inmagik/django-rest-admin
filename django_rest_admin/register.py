@@ -10,8 +10,7 @@ from rest_framework import viewsets, serializers, permissions, authentication
 #TODO:MOVE AWAY
 class RestAdminConfig(object):
     serializer_class = serializers.ModelSerializer
-
-
+    viewset_class = viewsets.ModelViewSet
 
 class RestAdminRegister(object):
     """
@@ -50,7 +49,7 @@ class RestAdminRegister(object):
                 #'permission_classes' : [ permissions.IsAdminUser, ],
                 #'authentication_classes' : [ authentication.TokenAuthentication, authentication.SessionAuthentication, ],
             }
-            viewset = type(v+'Serializer', (viewsets.ModelViewSet,), viewset_attrs)
+            viewset = type(v+'Serializer', (rest_admin_class.viewset_class,), viewset_attrs)
             router.register(r'%s'%v, viewset)
 
         return router
