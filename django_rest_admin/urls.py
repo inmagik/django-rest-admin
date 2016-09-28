@@ -5,7 +5,7 @@
 * urls coming from registered models
 """
 
-from django.conf.urls import patterns, include, url
+from django.conf.urls import include, url
 from django.conf import settings
 from .views import RestAdminMetaView
 from .register import rest_admin
