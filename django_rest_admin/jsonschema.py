@@ -8,7 +8,7 @@ def pretty_name(name):
         return u''
     return name.replace('_', ' ').capitalize()
 
-        
+
 class DjangoModelToJSONSchema(object):
     def convert_modelfield(self, name, field, json_schema):
         target_def = {
@@ -16,7 +16,6 @@ class DjangoModelToJSONSchema(object):
             'description': getattr(field, 'help_text', None),
             'x-schema-form' : {}
         }
-        print field, type(field)
         
         if isinstance(field, models.CharField):
             target_def['type'] = 'string'
@@ -45,13 +44,13 @@ class DjangoModelToJSONSchema(object):
         else:
             target_def['type'] = 'string'
 
-        
+
         if hasattr(field, 'choices') and field.choices:
             target_def['enum'] = [choice[0] for choice in field.choices]
-        
+
         return target_def
 
-        
+
 
     def convert_model(self, model, json_schema=None):
         if json_schema is None:
@@ -74,8 +73,5 @@ class DjangoModelToJSONSchema(object):
             if not field.null:
                 json_schema['required'].append(name)
             json_schema['properties'][name] = self.convert_modelfield(name, field, json_schema)
-            
+
         return json_schema
-        
-
-
