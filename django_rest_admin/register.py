@@ -49,7 +49,7 @@ class RestAdminRegister(object):
                 #'permission_classes' : [ permissions.IsAdminUser, ],
                 #'authentication_classes' : [ authentication.TokenAuthentication, authentication.SessionAuthentication, ],
             }
-            viewset = type(v+'Serializer', (rest_admin_class.viewset_class,), viewset_attrs)
+            viewset = type(v+'ViewSet', (rest_admin_class.viewset_class,), viewset_attrs)
             router.register(r'%s'%v, viewset)
 
         return router
